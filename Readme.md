@@ -15,16 +15,18 @@ Abre el archivo `docker-compose.yml` y ajusta los siguientes valores:
 - `MYSQL_DATABASE`: El nombre de la base de datos de PrestaShop.
 - `MYSQL_USER`: El nombre de usuario para la base de datos de PrestaShop.
 - `MYSQL_PASSWORD`: La contraseña para el usuario de la base de datos de PrestaShop.
- -  'image'
-  container_name: prestashop
+- 
+ -  'image' : La imagen de prestashop, en este caso cojeremos la ultima version.
+  container_name: El nombre que queramos darle al contenedor
   environment:
-  DB_SERVER: mysql
-  DB_USER: prestashop_user
-  DB_PASSWD: prestashop_password
-  DB_NAME: prestashop_db
-  ports:
-  - "80:80"
-  depends_on:
+  DB_SERVER: El servidor de base de datos que usemos, en este caso mysql 
+  DB_USER: El usuario d ela base de datos, en este caso prestashop_user
+  DB_PASSWD: La contraseña para el usuario de la base.
+  DB_NAME: el nombre de la base de datos 
+  ports: el puerto en el que pongamos prestashop, en este caso en el 80:80
+ - depends on: que indica que depende de lo que escribimos arriba de la configuracion de mysql.
+volume: el volumen donde se almacena toda la informacion de la base.
+
 
 ## Paso 4: Iniciar los contenedores
 
@@ -35,11 +37,15 @@ docker-compose up -d
 ```
 
 
-### Paso 
+## Paso 5
+En Php Storm o el Ide en el que estemos buscamos nuestra base de daros desde la interfaz en este caso mysql y la configuramos como en el yml, con el puerto 3306, el user prestashop_user y la contraseña prestashop_password ademas de 
+el nombre de la base que en este caso sera prestashop_db
+
+![captura2.png](captura2.png)
 
 Esto iniciará los contenedores de MySQL y PrestaShop en segundo plano.
 
-## Paso 5: Acceder a PrestaShop
+## Paso 6: Acceder a PrestaShop
 
 Abre tu navegador web y ve a [http://localhost](http://localhost). Deberías ver la instalación de PrestaShop. Sigue las instrucciones para configurar tu tienda.
 
